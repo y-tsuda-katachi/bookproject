@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  書籍修正
+{% endblock %}
+
+{% block h1 %}
+  書籍修正
+{% endblock %}
+
+{% block content %}
+  <div class="container" style="max-width: fit-content;">
+    <form method="post" enctype="multipart/form-data" class="p-4 m-4 bg-light border border-success rounded form-group">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button class="btn btn-success" type="submit">修正する</button>
+      <a href="{% url 'detail-book' object.pk %}" class="btn btn-secondary">戻る</a>
+    </form>
+  </div>
+{% endblock %}

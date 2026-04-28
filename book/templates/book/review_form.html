@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  レビュー投稿
+{% endblock %}
+{% block h1 %}
+  レビュー投稿
+{% endblock %}
+{% block content %}
+  <div class="container">
+    <form method="post" class="p-4 m-4 bg-light border border-success rounded form-group">
+      {% csrf_token %}
+      <label for="book_title">対象書籍</label>
+      <input id="book_title" class="form-control mb-3" value="{{ book.title }}" readonly />
+      <label for="title">タイトル</label>
+      <input class="form-control mb-3" name="title" id="title" />
+      <label for="text">本文</label>
+      <textarea class="form-control mb-3" name="text" id="text" rows="3"></textarea>
+      <label for="rate">星の数</label>
+      <select name="rate" id="rate" class="form-control mb-3">
+        <option value="0">0（最低）</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3" selected>3（普通）</option>
+        <option value="4">4</option>
+        <option value="5">5（最高）</option>
+      </select>
+      <input type="hidden" name="book" value="{{ book.id }}">
+      <button type="submit" class="mb-1 form-control btn btn-success">投稿する</button>
+      <a href="{% url 'detail-book' book.id %}" class="form-control btn btn-secondary">戻る</a>
+    </form>
+  </div>
+{% endblock %}

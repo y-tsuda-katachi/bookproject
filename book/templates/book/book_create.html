@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  My書籍作成
+{% endblock %}
+
+{% block content %}
+  <div class="container" style="max-width: fit-content;">
+    <form method="post" enctype="multipart/form-data" class="p-4 m-4 bg-light border border-success rounded form-group">{% csrf_token %}
+      {{ form.as_p }}
+      <input class="form-control" type="submit" value="作成する" />
+    </form>
+  </div>
+{% endblock %}

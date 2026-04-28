@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  書籍削除
+{% endblock %}
+
+{% block content %}
+  <div class="container" style="max-width: fit-content;">
+    <form method="post">
+      {% csrf_token %}
+      <button class="btn btn-danger" type="submit">{{ object.title }}を削除する</button>
+      <a href="{% url 'detail-book' object.pk %}" class="btn btn-secondary">戻る</a>
+    </form>
+  </div>
+{% endblock %}
